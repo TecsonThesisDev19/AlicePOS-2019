@@ -134,8 +134,8 @@
 	Arguements:		array(table_name, id, selected_row)
 	SQL:			DELETE FROM table_name WHERE id = selected_row;
 	*/
-	function deleteRecord($table_name,$uid,$conn){
-		$sql = "DELETE FROM $table_name WHERE uid=$uid";
+	function deleteRecord($table_name,$col_uid,$uid,$conn){
+		$sql = "DELETE FROM $table_name WHERE $col_uid='$uid'";
 
 		if ($conn->query($sql) === TRUE) {
 		    echo "Record deleted successfully";

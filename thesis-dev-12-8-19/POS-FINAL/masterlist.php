@@ -191,24 +191,24 @@
                     <th>Actions</th>
                    <th></th>
                   </tr>
-                </thead>
-                   <thead>
-                       <form method="GET">
-                  <tr>
-                    <th><input type="text" name = 'mid' class="form-control" placeholder="Dish ID"></th>
-                    <th><input type="text" name = 'tom' class="form-control" placeholder="Name"></th>
-                    <th><input type="text" name = 'nom' class="form-control" placeholder="Category" ></th>
-                    <th><input type="text" name = 'price' class="form-control" placeholder="Price"></th>
-                    <th> <button type="submit" class="btn btn-secondary btn-block" > Add</button></th>
-               <th></th>
-                  </tr>
-                       </form>
-                       <?php 
-                              $table_name = 'menu';
-                              $val_array = array($_GET['mid'],$_GET['tom'],$_GET['nom'],$_GET['price']);
+              </thead>
+              <thead>
+                   <form method="GET">
+                    <tr>
+                      <th><input type="text" name = 'mid' class="form-control" placeholder="Dish ID"></th>
+                      <th><input type="text" name = 'tom' class="form-control" placeholder="Name"></th>
+                      <th><input type="text" name = 'nom' class="form-control" placeholder="Category" ></th>
+                      <th><input type="text" name = 'price' class="form-control" placeholder="Price"></th>
+                      <th> <button type="submit" class="btn btn-secondary btn-block" > Add</button></th>
+                      <th></th>
+                    </tr>
+                   </form>
+                   <?php 
+                          $table_name = 'menu';
+                          $val_array = array($_GET['mid'],$_GET['tom'],$_GET['nom'],$_GET['price']);
 
-                              //createRecord($table_name,$val_array,$conn);
-                           ?>
+                          //createRecord($table_name,$val_array,$conn);
+                       ?>
                 </thead>
                 <tfoot>
                   <tr>
@@ -246,8 +246,8 @@
                         foreach ($row as $value) {
                           echo '<td>'.$value.'</td>';
                         }
-                        echo '<td>  <button type="button" class="btn btn-secondary btn-block" > Edit</button> </td>';
-                        echo '<td> <button type="button" class="btn btn-secondary btn-block" > Delete</button></td>';
+                        echo '<form method="GET"><td><button type="submit" class="btn btn-secondary btn-block">Edit</button></td></form>';
+                        echo '<form><td><button type="submit" class="btn btn-secondary btn-block">Delete</button></td></form>';
                         echo '</tr>';
                       }
                       //echo '</table>';
