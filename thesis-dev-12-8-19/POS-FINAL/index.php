@@ -310,121 +310,95 @@ include 'includes/crud.inc.php';
   </div> -->
 
   <!-- Order Table -->
+
   <div class= "row" style="margin-left: auto" >
-  <div class = "col-6.5">
-  <div class="card mb-2">
-  <div class="card-header">
-  <i class="fas fa-table"></i>
-  Order List (Order Number)</div>
-  <div class="card-body">
-  <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-  <thead>
-  <tr>
-  <th>Name</th>
-  <th>Quantity</th>
-  <th>Price</th>
-  <th>Total</th>
-  <th></th>
-  </tr>
-  </thead>
+  <form method="GET">
+    <div class = "col-6.5">
+      <div class="card mb-2">
+        <div class="card-header"><i class="fas fa-table"></i>Order List (Order Number)</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" name='transaction_table' id="table_id" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
 
-  <tbody>
-
-  <tr>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th>
-  <button type="button" class="btn btn-secondary btn-block"><i class="far fa-times-circle"></i></button>      
-  </th>
-
-  </tr>
-
-  </tbody>
-  </table>
-  </div>
-  </div>
-  <!--   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
-
-  <div class = "row">
-  <div class="col-4">
-  Subtotal
-  </div>
-  <div class="col-4">
-  <div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-  </div>
-  </div>
-  </div>
-  <div class = "row">
-  <div class="col-4">
-  Discount
-  </div>
-  <div class="col-4">
-  <!-- <div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-  </div> 
-  <select class="selectpicker" data-style="btn-success" style="display: none;">
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-  </select>
-  </div> --> 
-  <div class="form-group">
-  <select class="form-control" id="sel1">
-  <option>None</option>
-  <option>Senior Citizen</option>
-  <option>PWD</option>
-  <option>Government</option>
-  </select>
-
-
-  <div class="md-4">
-  <div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-  </div>
-  </div>
-  </div>
-  </div>
-
-
-
-
-  </div>
-
-  <div class = "row" >
-  <div class="col-4">
-  Total Amount
-  </div>
-  <div class="col-4">
-  <div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-  </div>
-  </div>
-  </div>
-  <div class = "row" >
-  <div class="col-4">
-  Cash
-  </div>
-  <div class="col-4">
-  <div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-  </div>
-  </div>
-  </div>
-  <div class = "row"  >
-
-  <div class="col-4" style="margin-left: auto; margin-right: auto">
-  <div class="form-group">
-  <button type="button" class="btn btn-primary btn-block">Enter</button>
-  </div>
-  </div>
-  </div>
-  </div>  
-
-  </div>
+        <div class = "row">
+          <div class="col-4">
+          Subtotal
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col-4">Discount</div>
+          <div class="col-4">
+            <!-- <div class="form-group">
+            <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div> 
+            <select class="selectpicker" data-style="btn-success" style="display: none;">
+            <option>Mustard</option>
+            <option>Ketchup</option>
+            <option>Relish</option>
+            </select>
+            </div> --> 
+            <div class="form-group">
+              <select class="form-control" id="sel1">
+                <option>None</option>
+                <option>Senior Citizen</option>
+                <option>PWD</option>
+                <option>Government</option>
+              </select>
+              <div class="md-4">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleFormControlInput1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "row" >
+          <div class="col-4">Total Amount</div>
+          <div class="col-4">
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+          </div>
+        </div>
+        <div class = "row" >
+          <div class="col-4">Cash</div>
+          <div class="col-4">
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+          </div>
+        </div>
+        <div class = "row"  >
+          <div class="col-4" style="margin-left: auto; margin-right: auto">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Enter</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </form>
+   
 
 
   <div class="col-6" stye="margin-right;auto">
@@ -464,7 +438,7 @@ include 'includes/crud.inc.php';
   Beef</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="refTable" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dish Name</th>
@@ -496,7 +470,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -519,7 +493,7 @@ include 'includes/crud.inc.php';
   Fish</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="refTable2" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dish Name</th>
@@ -550,7 +524,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -572,7 +546,7 @@ include 'includes/crud.inc.php';
   Chicken</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable3" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dish Name</th>
@@ -603,7 +577,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -624,7 +598,7 @@ include 'includes/crud.inc.php';
   Pork</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable4" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dish Name</th>
@@ -655,7 +629,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -676,7 +650,7 @@ include 'includes/crud.inc.php';
   Salad</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable5" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dish Name</th>
@@ -707,7 +681,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -728,7 +702,7 @@ include 'includes/crud.inc.php';
   Soup</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable6" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Soup Name</th>
@@ -759,7 +733,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -780,7 +754,7 @@ include 'includes/crud.inc.php';
   Dessert</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable7" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Dessert Name</th>
@@ -811,7 +785,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -832,7 +806,7 @@ include 'includes/crud.inc.php';
   Beverages</div>
   <div class="card-body">
   <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <table class="table table-bordered" id="reftable8" width="100%" cellspacing="0">
   <thead>
   <tr>
   <th>Name</th>
@@ -864,7 +838,7 @@ include 'includes/crud.inc.php';
   foreach ($row as $value) {
   echo '<td>'.$value.'</td>';
   }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
   echo '</tr>';
   }
   //echo '</table>';
@@ -874,79 +848,67 @@ include 'includes/crud.inc.php';
   ?>
 
   </tbody>
-  </table>
+    </table>
+    </div>
+    </div>
+    </div>
+    <div id="tab09" class="tab-contents">
+
+    <div class="card-header">
+    <i class="fas fa-table"></i>
+    Add-ons</div>
+    <div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="reftable9" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+
+      <?php 
+      $sql = "SELECT menu_name, menu_price FROM menu WHERE menu_description = 'Extras'";
+
+      //echo $sql.'<br>';       //sql query debug
+
+      $result = $conn->query($sql);
+
+      if (!$result) {
+      trigger_error('Invalid query: ' . $conn->error);
+      }
+
+      if ($result->num_rows > 0) {
+      // output data of each row
+
+      //echo $col_tags; //table and header tag included
+
+      while($row = $result->fetch_assoc()) {
+      echo '<tr>';
+      foreach ($row as $value) {
+      echo '<td>'.$value.'</td>';
+      }
+    echo '<th><button type="button" onclick="addRow()" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
+      echo '</tr>';
+      }
+      //echo '</table>';
+      } else {
+      echo "0 results";
+      }
+      ?>
+
+      </tbody>
+    </table>
   </div>
   </div>
   </div>
-  <div id="tab09" class="tab-contents">
-
-  <div class="card-header">
-  <i class="fas fa-table"></i>
-  Add-ons</div>
-  <div class="card-body">
-  <div class="table-responsive">
-  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-  <thead>
-  <tr>
-  <th>Name</th>
-  <th>Price</th>
-  <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-
-
-  <?php 
-  $sql = "SELECT menu_name, menu_price FROM menu WHERE menu_description = 'Extras'";
-
-  //echo $sql.'<br>';       //sql query debug
-
-  $result = $conn->query($sql);
-
-  if (!$result) {
-  trigger_error('Invalid query: ' . $conn->error);
-  }
-
-  if ($result->num_rows > 0) {
-  // output data of each row
-
-  //echo $col_tags; //table and header tag included
-
-  while($row = $result->fetch_assoc()) {
-  echo '<tr>';
-  foreach ($row as $value) {
-  echo '<td>'.$value.'</td>';
-  }
-  echo '<th><button type="button" class="btn btn-primary btn-block"><i class="far fa-plus-square"></i></button></th>';
-  echo '</tr>';
-  }
-  //echo '</table>';
-  } else {
-  echo "0 results";
-  }
-  ?>
-
-  </tbody>
-  </table>
   </div>
-  </div>
-  </div>
-  </div>
-
-
   </div>  
-
   </div>
-
-
-
-
-
-
-
-
-
   </div>
   <!-- /.container-fluid -->
 
@@ -1008,6 +970,91 @@ include 'includes/crud.inc.php';
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/tab.js"></script>
+
+  <script type="text/javascript">
+
+  function addRow(){
+
+    var table = document.getElementById('table_id');
+    var refTable = document.getElementById('refTable');
+
+    var newRow = table.insertRow(-1);
+    var newCell1 = newRow.insertCell(0);
+    var newCell2 = newRow.insertCell(1);
+    var newCell3 = newRow.insertCell(2);
+    var newCell4 = newRow.insertCell(3);
+    var newCell5 = newRow.insertCell(4);
+
+    for(var i = 1; i < refTable.rows.length; i++){
+          refTable.rows[i].onclick = function()
+          {
+              //rIndex = this.rowIndex;
+              console.log(this.cells[0].innerHTML);
+              console.log(this.cells[1].innerHTML);
+
+              //document.getElementById('val1').value = (this.cells[0].innerHTML);
+              //document.getElementById('val2').value = (this.cells[1].innerHTML);
+
+        var val1 = document.createTextNode(this.cells[0].innerHTML);
+        var val2 = document.createTextNode(this.cells[1].innerHTML);
+        var val3 = document.createTextNode("n");
+        var val4 = document.createTextNode("n");
+
+        newCell1.appendChild(val1);
+        newCell2.appendChild(val3);
+        newCell3.appendChild(val2);
+        newCell4.appendChild(val4);
+
+          };
+      }
+
+    //var val1 = document.createTextNode(document.getElementById('val1').value);
+    //var val2 = document.createTextNode(document.getElementById('val2').value);
+    //var val3 = document.createTextNode(document.getElementById('val3').value);
+    var button = document.createElement('button');
+    button.innerHTML = "X";
+    button.setAttribute('id','remove');
+    button.setAttribute('onclick','removeRow()');
+
+
+    //newCell1.appendChild(val1);
+    //newCell2.appendChild(val2);
+    //newCell3.appendChild(val3);
+    newCell5.appendChild(button);
+  }
+
+  function removeRow(){
+    var table = document.getElementById('table_id');
+    for(var i = 1; i < table.rows.length; i++){
+          table.rows[i].onclick = function()
+          {
+               rIndex = this.rowIndex;
+               table.deleteRow(rIndex);
+          };
+      }
+
+
+  }
+  </script>
+
 </body>
+
+<?php
+  // $data = file_get_contents('http://localhost/thesis_dev_12-8-2019/thesis-dev-12-8-19/POS-FINAL/index.php');
+
+  // $dom = new domDocument;
+
+  // $dom->loadHTML($data);
+  // $dom->preserveWhiteSpace = false;
+  // $tables = $dom->getElementById('table_id');
+
+  // $rows = $tables->item(1)->getElementsByTagName('tr');
+
+  // foreach ($rows as $row) {
+  //         $cols = $row->getElementsByTagName('td');
+  //         echo $cols[2];
+  // }
+
+?>
 
 </html>

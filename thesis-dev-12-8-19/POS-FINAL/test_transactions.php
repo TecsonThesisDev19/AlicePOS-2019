@@ -29,12 +29,13 @@
 	 			<td><button>X</button></td>
 	 		</tr>
  		</table>
+
  		<button type="submit">submit</button>
  	</form>
- 	<?php 
-
- 	 ?>
-
+	<script type="text/javascript">
+		var table = getElementById('table_id');
+		
+	</script>
 	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 		<thead>
 			<tr>
