@@ -65,7 +65,9 @@
         
           <div class="col-6">
             <form method="POST">
-            <input type="text" name="table_id" value="<?php echo isset($_GET["table_id"]) ? $_GET["table_id"] : ''; ?>"></br>
+            <input type="hidden" name="frmname" value="insert"/>
+
+            <input type="text" name="table_id" value="<?php echo isset($_POST["table_id"]) ? $_POST["table_id"] : ''; ?>"></br>
             <div class="tabs">
             <div class="tab-button-outer">
               <ul id="tab-button">
@@ -561,14 +563,15 @@
                       <!-- <th>RECEIPTS ID</th> -->
                       <!-- <th>SALES NUMBER</th> -->
                       <th>QUANTITY</th>
-                      <!-- <th>DATE TIME</th> -->
+                      <th>DATE TIME</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                       if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $tableRef = $_POST['table_id'];
-                        $sql = "SELECT * FROM `orders` WHERE `table_ID` = '$tableRef'";
+                        //$sql = "SELECT * FROM `orders` WHERE `table_ID` = '$tableRef' LEFT JOIN `menu` ON orders.menu_ID = menu.menu_ID";
+                        $sql = "SELECT * FROM `orders` LEFT JOIN `menu` ON orders.menu_ID = menu.menu_ID WHERE `table_ID` = '$tableRef'";
                         //$sql = "SELECT * FROM `orders`";
                         
                         $result = $conn->query($sql);
@@ -582,7 +585,8 @@
                             while($row = $result->fetch_assoc()) {
                               echo '<tr>';
                                 echo '<td>'.$row['order_ID'].'</td>';
-                                echo '<td>'.$row['menu_ID'].'</td>';
+                                //echo '<td>'.$row['menu_ID'].'</td>';
+                                echo '<td>'.$row['menu_name'].'</td>';                                
                                 //echo '<td>'.$row['cust_ID'].'</td>';
                                 //echo '<td>'.$row['payment_ID'].'</td>';
                                 //echo '<td>'.$row['cashier_ID'].'</td>';
@@ -590,7 +594,7 @@
                                 //echo '<td>'.$row['receipts_ID'].'</td>';
                                 //echo '<td>'.$row['sales_number'].'</td>';
                                 echo '<td>'.$row['order_quantity'].'</td>';
-                                //echo '<td>'.$row['order_date_time'].'</td>';
+                                echo '<td>'.$row['order_date_time'].'</td>';
                               echo '</tr>';
                             }
                           } 
@@ -779,7 +783,13 @@
     </div>
 
     <?php 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(isset($_POST['frmname'])){
+      $filename = $_POST['frmname'];
+    }
+    if(isset($filename)){ 
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' and $_POST['frmname']=='insert') {
+      $timezone = date_default_timezone_get();
+      $date = date('Y-m-d h:i:s', time());
 
       $menu_ID =$_POST['add'];
       //$cust_ID =$_POST['cust_id'];
@@ -795,7 +805,7 @@
       
         //$sql = "INSERT INTO `orders`( `menu_ID`, `cust_ID`, `payment_ID`, `cashier_ID`, `table_ID`, `receipts_ID`,`order_quantity`) VALUES ('$menu_ID','$cust_ID','$payment_ID','$cashier_ID','$table_ID','$receipts_ID','$qNum');";
 
-        $sql = "INSERT INTO `orders`( `menu_ID`, `order_quantity`, `table_ID`) VALUES ('$menu_ID','$qNum','$table_ID');";
+        $sql = "INSERT INTO `orders`( `menu_ID`, `order_quantity`, `table_ID`,`order_date_time`) VALUES ('$menu_ID','$qNum','$table_ID','$date');";
 
         //echo $sql.'<br>';       //sql query debug
         //echo $quantity_ID.'<br>';
@@ -807,6 +817,8 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
       }
+    }
+    
     ?>    
       <!-- /.container-fluid -->
 

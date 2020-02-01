@@ -55,7 +55,7 @@
 	 include 'nav.php';
   ?>
   <div id="content-wrapper">
-    <form method="GET" action="index.php">
+    <form method="POST" action="index.php">
       <input type="text" name="table_id">
       <button type="submit">Select table</button>
     </form>
