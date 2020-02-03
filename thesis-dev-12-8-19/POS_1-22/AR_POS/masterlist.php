@@ -1,3 +1,8 @@
+<?php 
+  include("php/db_inc.php");
+  //include("../php/autogen.php");
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,16 +60,11 @@
     </ul>
 
   </nav>
-<?php
-	
-	include 'nav.php';
-
-?>
-
+  <?php 	
+  	include 'nav.php';
+  ?>
     <div id="content-wrapper">
-
       <div class="container-fluid">
-
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -77,14 +77,11 @@
           
           
         <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Menu</div>
-   
+          <div class="card-header"><i class="fas fa-table"></i>Menu</div>
           <div class="card-body">
             <div class="table-responsive">
+              <form method="POST">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                 
                 <thead>
                   <tr>
                     <th>Category</th>
@@ -95,56 +92,85 @@
                    <th></th>
                   </tr>
                 </thead>
-                   <thead>
-                       <form action="../../php/addmenu.php" method="post">
+                <thead>
                   <tr>
                     <th><input type="text" class="form-control" name="category" placeholder="Category" ></th>
                     <th><input type="text" class="form-control" name="menuNum" placeholder="Dish ID"></th>
                     <th><input type="text" class="form-control" name="menuName" placeholder="Name"></th>
                     <th><input type="text" class="form-control" name="menuPrice" placeholder="Price"></th>
-                    <th> <button type="submit" class="btn btn-secondary btn-block" > Add</button></th>
-               <th></th>
+                    <th><button type="submit" class="btn btn-secondary btn-block" name="add" value="pressed"> Add</button></th>
                   </tr>
-                       </form>
+                    <?php 
+                      if ($_SERVER['REQUEST_METHOD'] == 'POST' and $_POST['add']=="pressed") {
+
+                        $menu_description = $_POST['category'];
+                        $menu_id = $_POST['menuNum'];
+                        $menu_name = $_POST['menuName'];
+                        $menu_price = $_POST['menuPrice'];
+
+                        $sql = "INSERT INTO `menu`(`menu_ID`, `menu_name`, `menu_description`, `menu_price`) VALUES ('$menu_id','$menu_name','$menu_description','$menu_price');";
+
+                        //echo $sql.'<br>';       //sql query debug
+                        //echo $quantity_ID.'<br>';
+
+                        if ($conn->query($sql) === TRUE) {
+                            echo "New record created successfully"; 
+
+                        } else {
+                            echo "Error: " . $sql . "<br>" . $conn->error;
+                        }
+                      } 
+                    ?>  
                 </thead>
                 <tfoot>
                   <tr>
-                   <th>Category</th>
+                    <th>Category</th>
                     <th>Dish ID</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th></th>
-                   <th></th>
+                    <th></th>
                   </tr>
                 </tfoot>
                 <tbody>
-            <!--        <?php
-                                require '../../php/databaseconn.php';
-                                $query = $conn->query("select * from `menu` where menu_num > 1") or die(mysqli_error());
-                                while($fetch = $query->fetch_array()){
-                            ?>     -->
-                  <tr>
-                    <td><?php echo $fetch['cat_name']?></td>
-                    <td><?php echo $fetch['menu_num']?></td>
-                    <td><?php echo $fetch['menu_name']?></td>
-                    <td><?php echo $fetch['menu_price']?> </td>
-                      <td>  <button type="button" class="btn btn-secondary btn-block" > Edit</button> </td>
-                      <td> <button type="button" class="btn btn-secondary btn-block" > Delete</button></td>
-                  </tr>
-                  
-                <!--     <?php
-                                }
-                                $conn->close();
-                            ?>     --> 
+                  <?php 
+                    $sql = "SELECT * FROM menu";
+                    $result = $conn->query($sql);
+
+                    if (!$result) {
+                      trigger_error('Invalid query: ' . $conn->error);
+                    }
+
+                    if ($result->num_rows > 0) {
+                      // output data of each row
+
+                      //echo $col_tags; //table and header tag included
+
+                      while($row = $result->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td>'.$row['menu_description'].'</td>';                          
+                        echo '<td>'.$row['menu_ID'].'</td>';
+                        echo '<td>'.$row['menu_name'].'</td>';
+                        echo '<td>'.$row['menu_price'].'</td>';
+                        echo '<td><button type="submit" class="btn btn-secondary btn-block" name="edit" value="'.$row['menu_ID'].'">Edit</button></td>';
+                        echo '<td><button type="submit" class="btn btn-secondary btn-block" name="delete'.$row['menu_ID'].'" value="'.$row['menu_ID'].'">Delete</button></td>';
+
+                        echo '</tr>';
+                      }
+
+                    } 
+                    else {
+                      echo "0 results";
+                    }
+                  ?>
                 </tbody>
               </table>
+              </form>
             </div>
           </div>
     <!--      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
         </div>
          
-          
-
     <!--    <p class="small text-center text-muted my-5">
           <em>More table examples coming soon...</em>
         </p> -->

@@ -65,7 +65,7 @@
         
           <div class="col-6">
             <form method="POST">
-            <input type="hidden" name="frmname" value="insert"/>
+            <input type="hidden" name="frmname" value="orders_tab"/>
 
             <input type="text" name="table_id" value="<?php echo isset($_POST["table_id"]) ? $_POST["table_id"] : ''; ?>"></br>
             <div class="tabs">
@@ -595,6 +595,7 @@
                                 //echo '<td>'.$row['sales_number'].'</td>';
                                 echo '<td>'.$row['order_quantity'].'</td>';
                                 echo '<td>'.$row['order_date_time'].'</td>';
+                                echo "<td><button>Delete</button></td>";
                               echo '</tr>';
                             }
                           } 
@@ -787,7 +788,7 @@
       $filename = $_POST['frmname'];
     }
     if(isset($filename)){ 
-      if ($_SERVER['REQUEST_METHOD'] == 'POST' and $_POST['frmname']=='insert') {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' and $_POST['frmname']=='orders_tab') {
       $timezone = date_default_timezone_get();
       $date = date('Y-m-d h:i:s', time());
 
